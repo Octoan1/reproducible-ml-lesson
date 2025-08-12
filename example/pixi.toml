@@ -1,0 +1,29 @@
+[workspace]
+authors = ["Octoan1 <okloepping@gmail.com>"]
+channels = ["conda-forge"]
+name = "example"
+platforms = ["win-64", "linux-64", "osx-arm64"]
+version = "0.1.0"
+
+#[tasks.start]
+#cmd = "pixi run lab"
+[tasks.start]
+description = "Start exploring"
+depends-on = [ "lab" ]
+
+[tasks.lab]
+description = "Launch JupyterLab"
+cmd = "jupyter lab"
+
+[tasks.A]
+cmd = "echo 'hello world'"
+
+[tasks.B]
+depends-on = [ "A" ]
+cmd = "echo 'hello again'"
+
+[dependencies]
+python = ">=3.13.5,<3.14"
+numpy = ">=2.3.2,<3"
+notebook = ">=7.4.5,<8"
+jupyterlab = ">=4.4.5,<5"
